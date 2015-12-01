@@ -1,15 +1,29 @@
 import java.io.*;
-class Example
+class iO
 {  
    public static void main(String args[]) 
    {
 	FileInputStream fis = null;
-        fis = new FileInputStream("B:/myfile.txt"); 
+        try {
+			fis = new FileInputStream("myfile.txt");
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} 
 	int k; 
-	while(( k = fis.read() ) != -1) 
-	{ 
-		System.out.print((char)k); 
+
+	try {
+		while(( k = fis.read() ) != -1) 
+		{ 
+			System.out.print((char)k); 
+		}
+	} catch (IOException e) {
+		e.printStackTrace();
 	} 
-	fis.close(); 	
+
+	try {
+		fis.close();
+	} catch (IOException e) {
+		e.printStackTrace();
+	} 	
    }
 }
